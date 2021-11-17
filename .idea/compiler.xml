@@ -7,6 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Galaga" />
+        <module name="lab01" />
+        <module name="lab01-PIP0015" />
+        <module name="Pong-project" />
       </profile>
     </annotationProcessing>
   </component>
