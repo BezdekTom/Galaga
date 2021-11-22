@@ -37,8 +37,28 @@ public class GameController {
     }
 
     private void drawScene(double deltaT) {
-        //game.draw(canvas);
-        //game.simulate(deltaT);
+        game.draw(canvas);
+        game.simulate(deltaT);
+    }
+
+    @FXML
+    private  void rightPressed(){
+        game.moveRight();
+    }
+
+    @FXML
+    private void leftPressed(){
+        game.moveLeft();
+    }
+
+    @FXML
+    private  void stopShip(){
+        game.stopShip();
+    }
+
+    @FXML
+    private  void fire(){
+        game.fire();
     }
 
 }
