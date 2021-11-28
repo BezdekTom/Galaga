@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="galaga.GameController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyPressed" onKeyReleased="#keyReleased" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="galaga.GameController">
    <center>
-      <Canvas fx:id="canvas" height="600.0" onKeyTyped="#rightPressed" width="400.0" BorderPane.alignment="CENTER" />
+      <Canvas fx:id="canvas" height="600.0" onKeyPressed="#keyPressed" onKeyReleased="#keyReleased" width="400.0" BorderPane.alignment="CENTER" />
    </center>
    <right>
       <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
@@ -33,7 +33,7 @@
                   <Insets left="15.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onMousePressed="#rightPressed" onMouseReleased="#stopShip" text="Right" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button fx:id="rightButton" mnemonicParsing="false" onMousePressed="#rightPressed" onMouseReleased="#stopShip" text="Right" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
