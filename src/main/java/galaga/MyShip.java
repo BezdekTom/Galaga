@@ -1,5 +1,6 @@
 package galaga;
 
+import javafx.geometry.BoundingBox;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -25,6 +26,11 @@ public class MyShip extends Ship{
         horizontalPosition = (rightBorder - leftBorder - pictureWidth)/2;
     }
 
+    public MyShip(double aHeight, double aVerticalPosition, double absolutSpeed, double aLeftBorder, double aRightBorder, SimulableListener aSimulableListener){
+        this(aHeight,aVerticalPosition,absolutSpeed,aLeftBorder,aRightBorder);
+        simulableListener = aSimulableListener;
+    }
+
     public  MyShip(double aHeight, double aHorizontalPosition, double aVerticalPosition, double absolutSpeed, double aLeftBorder, double aRightBorder){
         maxSpeed = absolutSpeed;
         horizontalPosition = aHorizontalPosition;
@@ -42,7 +48,7 @@ public class MyShip extends Ship{
     }
 
     @Override
-    public boolean simulate(double timeStep){
+    public void  simulate(double timeStep){
         if(direction != 0){
             if(horizontalPosition+direction*maxSpeed*timeStep < leftBorder){
                 horizontalPosition = leftBorder;
@@ -54,7 +60,18 @@ public class MyShip extends Ship{
                 horizontalPosition += direction*maxSpeed*timeStep;
             }
         }
-        return true;
+    }
+
+    @Override
+    public BoundingBox getBoundingBox(){
+        return  (new BoundingBox(this.horizontalPosition, this.verticalPosition, this.pictureWidth, this.height));
+    }
+
+    @Override
+    public void  hit(DrawableSimulable another){
+        if(intersect(another) && (another instanceof EnemyShip)){
+            simulableListener.destruct(this);
+        }
     }
 
     public  void moveLeft(){
