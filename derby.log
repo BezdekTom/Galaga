@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Tue Dec 07 13:13:00 CET 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-017d-94cf-b531-00000ec395e0 
+on database directory C:\Users\tomuz\Skola\vsb\Java\Galaga\HighScore with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@6f496d9f 
+Loaded from file:/C:/Users/tomuz/.m2/repository/org/apache/derby/derby/10.15.2.0/derby-10.15.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=17+35-LTS-2724
+user.dir=C:\Users\tomuz\Skola\vsb\Java\Galaga
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
