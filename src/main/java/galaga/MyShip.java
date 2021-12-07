@@ -26,6 +26,11 @@ public class MyShip extends Ship{
         horizontalPosition = (rightBorder - leftBorder - pictureWidth)/2;
     }
 
+    public  MyShip(double aHeight, double aVerticalPosition, double absolutSpeed, double aLeftBorder, double aRightBorder, ShipListener aShipListener){
+        this(aHeight,aVerticalPosition,absolutSpeed,aLeftBorder,aRightBorder);
+        shipListener = aShipListener;
+    }
+
     public MyShip(double aHeight, double aVerticalPosition, double absolutSpeed, double aLeftBorder, double aRightBorder, SimulableListener aSimulableListener){
         this(aHeight,aVerticalPosition,absolutSpeed,aLeftBorder,aRightBorder);
         simulableListener = aSimulableListener;
@@ -69,17 +74,19 @@ public class MyShip extends Ship{
 
     @Override
     public void  hit(DrawableSimulable another){
-        if(intersect(another) && (another instanceof EnemyShip)){
+        if(intersect(another) && (another instanceof EnemyShip || another instanceof EnemyMissile)){
+            another.hit(this);
             simulableListener.destruct(this);
         }
     }
 
     public  void moveLeft(){
-        direction = -1;
+        direction -= 1;
     }
 
     public  void moveRight(){
-        direction = 1;
+
+        direction += 1;
     }
 
     public  void stop(){
@@ -88,5 +95,10 @@ public class MyShip extends Ship{
 
     public  double getHorizontalPosition(){
         return  horizontalPosition + pictureWidth/2;
+    }
+
+    @Override
+    public  void fire(){
+        shipListener.fire(new Point2D(horizontalPosition+ pictureWidth/2, verticalPosition + height/2), -1);
     }
 }

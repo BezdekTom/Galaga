@@ -11,13 +11,13 @@ public class MyMissile extends  DrawableSimulableEntity{
     private  final double topBorder;
     private  final double height;
     private  double width;
-    private  Image image = Constants.MY_MISSILE;
+    private  Image image = Constants.HUMANS_MISSILE;
 
     public  MyMissile(double aHorizontalPosition, double aVerticalPosition,double aHeight, double aSpeed, double aTopBorder){
-        verticalPosition = aVerticalPosition;
         speed = aSpeed;
         topBorder = aTopBorder;
         height = aHeight;
+        verticalPosition = aVerticalPosition - 3* (height/4) ;
         width = (height/ image.getHeight())*image.getWidth();
         horizontalPosition = aHorizontalPosition - (height/ image.getHeight())*image.getWidth() / 2;
     }
@@ -34,7 +34,7 @@ public class MyMissile extends  DrawableSimulableEntity{
 
     @Override
     public void simulate(double timeStep){
-        if(verticalPosition - speed*timeStep > 0 && alive)
+        if(verticalPosition - speed*timeStep > 20 && alive)
         {
             verticalPosition -= timeStep*speed;
         }
@@ -45,12 +45,12 @@ public class MyMissile extends  DrawableSimulableEntity{
 
     @Override
     public BoundingBox getBoundingBox(){
-        return  new BoundingBox(horizontalPosition, verticalPosition, (height/ Constants.MY_MISSILE.getHeight())*Constants.MY_MISSILE.getWidth(), height);
+        return  new BoundingBox(horizontalPosition, verticalPosition, (height/ Constants.HUMANS_MISSILE.getHeight())*Constants.HUMANS_MISSILE.getWidth(), height);
     }
 
     @Override
     public void  hit(DrawableSimulable another){
-        if(intersect(another) && (another instanceof EnemyShip)){
+        if(intersect(another) && (another instanceof EnemyShip) && ((EnemyShip) another).alive){
             alive = false;
         }
     }
