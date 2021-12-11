@@ -48,6 +48,7 @@ public class App extends Application {
     private void startWelcome(Stage primaryStage){
         try {
             gameController = null;
+            scoreControler = null;
             //Construct a main window with a canvas.
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("WelcomeView.fxml"));
 
@@ -79,6 +80,7 @@ public class App extends Application {
     private  void starGame(Stage primaryStage, String name){
         try {
             welcomeController = null;
+            scoreControler = null;
             //Construct a main window with a canvas.
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("GameView.fxml"));
 
@@ -108,6 +110,7 @@ public class App extends Application {
     private void showScore(Stage primaryStage){
         try {
             gameController = null;
+            welcomeController = null;
             //Construct a main window with a canvas.
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("ScoreView.fxml"));
 

@@ -1,5 +1,5 @@
 package galaga;
 
 public interface ControlerListener {
-    public  void switchState(GameStates state);
+    void switchState(GameStates state);
 }

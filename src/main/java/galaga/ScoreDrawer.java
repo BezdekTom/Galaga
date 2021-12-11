@@ -2,6 +2,7 @@ package galaga;
 
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class ScoreDrawer {
     private  Score score;
@@ -21,7 +22,9 @@ public class ScoreDrawer {
     public void draw(GraphicsContext gc){
         gc.save();
         gc.setFill(Color.WHITE);
-        gc.fillText(score.toString(),5,20);
+        gc.setFont(Font.font ("Verdana", 10));
+        gc.fillText(score.toString(),5,Constants.MARGIN);
+
         gc.restore();
     }
 }

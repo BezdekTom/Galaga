@@ -12,8 +12,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class GameController implements Controler{
-    private  ScoreDAO scoreDAO = new ScoreDAO();
-    private ScoreFile scoreFile = new ScoreFile();
+    private final ScoreDAO scoreDAO = new ScoreDAO();
+    private final ScoreFile scoreFile = new ScoreFile();
 
     private  boolean running = true;
     private  ControlerListener controlerListener;

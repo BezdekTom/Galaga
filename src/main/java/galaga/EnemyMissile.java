@@ -14,7 +14,7 @@ public class EnemyMissile extends  DrawableSimulableEntity{
     private  Image image;
 
     public  EnemyMissile(int type, double aHorizontalPosition, double aVerticalPosition,double aHeight, double aSpeed, double aBottomBorder){
-        image = Constants.MISSILES[type];
+        image = Constants.ENEMY_MISSILES[type];
         verticalPosition = aVerticalPosition;
         speed = aSpeed;
         bottomBorder = aBottomBorder;
@@ -35,9 +35,11 @@ public class EnemyMissile extends  DrawableSimulableEntity{
 
     @Override
     public void simulate(double timeStep){
-        if(verticalPosition + speed*timeStep < bottomBorder && alive)
+        wasAlive = alive;
+
+        if(verticalPosition + Constants.SPEED_KOEF*speed*timeStep < bottomBorder && alive)
         {
-            verticalPosition += timeStep*speed;
+            verticalPosition += Constants.SPEED_KOEF*timeStep*speed;
         }
         else {
             simulableListener.destruct(this);
@@ -51,7 +53,7 @@ public class EnemyMissile extends  DrawableSimulableEntity{
 
     @Override
     public void  hit(DrawableSimulable another){
-        if(intersect(another) && (another instanceof MyShip) && ((MyShip) another).alive){
+        if(intersect(another) && (another instanceof MyShip) && ((MyShip) another).wasAlive){
             alive = false;
         }
     }

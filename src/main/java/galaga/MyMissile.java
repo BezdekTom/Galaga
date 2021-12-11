@@ -34,6 +34,7 @@ public class MyMissile extends  DrawableSimulableEntity{
 
     @Override
     public void simulate(double timeStep){
+        wasAlive = alive;
         if(verticalPosition - speed*timeStep > 20 && alive)
         {
             verticalPosition -= timeStep*speed;
@@ -50,7 +51,7 @@ public class MyMissile extends  DrawableSimulableEntity{
 
     @Override
     public void  hit(DrawableSimulable another){
-        if(intersect(another) && (another instanceof EnemyShip) && ((EnemyShip) another).alive){
+        if(intersect(another) && (another instanceof EnemyShip) && ((EnemyShip) another).wasAlive){
             alive = false;
         }
     }

@@ -8,6 +8,7 @@ public abstract class DrawableSimulableEntity implements  DrawableSimulable{
     protected SimulableListener simulableListener;
     protected  int numberOfHits = 0;
     protected boolean alive = true;
+    protected boolean wasAlive = true;
     protected double explosionTimer = 3;
 
     protected DrawableSimulableEntity(){

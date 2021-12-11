@@ -12,37 +12,35 @@ public class MyShip extends Ship{
     private double verticalPosition;
     private  boolean fored = false;
     private  double height;
-    private  final double leftBorder;
+    private  final double leftBorder = Constants.MARGIN;
     private  final double rightBorder;
     private  double pictureWidth;
 
-    public  MyShip(double aHeight, double aVerticalPosition, double absolutSpeed, double aLeftBorder, double aRightBorder){
+    public  MyShip(double aHeight, double aVerticalPosition, double absolutSpeed, double gameWidth){
         maxSpeed = absolutSpeed;
         verticalPosition = aVerticalPosition;
         height = aHeight;
-        leftBorder = aLeftBorder;
-        rightBorder = aRightBorder;
+        rightBorder = gameWidth - Constants.MARGIN;
         pictureWidth = (height/ Constants.HUMANS_SHIP.getHeight())*Constants.HUMANS_SHIP.getWidth();
         horizontalPosition = (rightBorder - leftBorder - pictureWidth)/2;
     }
 
-    public  MyShip(double aHeight, double aVerticalPosition, double absolutSpeed, double aLeftBorder, double aRightBorder, ShipListener aShipListener){
-        this(aHeight,aVerticalPosition,absolutSpeed,aLeftBorder,aRightBorder);
+    public  MyShip(double aHeight, double aVerticalPosition, double absolutSpeed, double gameWidth, ShipListener aShipListener){
+        this(aHeight,aVerticalPosition,absolutSpeed,gameWidth);
         shipListener = aShipListener;
     }
 
-    public MyShip(double aHeight, double aVerticalPosition, double absolutSpeed, double aLeftBorder, double aRightBorder, SimulableListener aSimulableListener){
-        this(aHeight,aVerticalPosition,absolutSpeed,aLeftBorder,aRightBorder);
+    public MyShip(double aHeight, double aVerticalPosition, double absolutSpeed, double gameWidth, SimulableListener aSimulableListener){
+        this(aHeight,aVerticalPosition,absolutSpeed,gameWidth);
         simulableListener = aSimulableListener;
     }
 
-    public  MyShip(double aHeight, double aHorizontalPosition, double aVerticalPosition, double absolutSpeed, double aLeftBorder, double aRightBorder){
+    public  MyShip(double aHeight, double aHorizontalPosition, double aVerticalPosition, double absolutSpeed, double gameWidth){
         maxSpeed = absolutSpeed;
         horizontalPosition = aHorizontalPosition;
         verticalPosition = aVerticalPosition;
         height = aHeight;
-        leftBorder = aLeftBorder;
-        rightBorder = aRightBorder;
+        rightBorder = gameWidth - Constants.MARGIN;
         pictureWidth = (height/ Constants.HUMANS_SHIP.getHeight())*Constants.HUMANS_SHIP.getWidth();
     }
 
@@ -54,6 +52,11 @@ public class MyShip extends Ship{
 
     @Override
     public void  simulate(double timeStep){
+        if(!alive){
+            simulableListener.destruct(this);
+            alive = true;
+        }
+
         if(direction != 0){
             if(horizontalPosition+direction*maxSpeed*timeStep < leftBorder){
                 horizontalPosition = leftBorder;
@@ -74,9 +77,8 @@ public class MyShip extends Ship{
 
     @Override
     public void  hit(DrawableSimulable another){
-        if(intersect(another) && (another instanceof EnemyShip || another instanceof EnemyMissile)){
-            another.hit(this);
-            simulableListener.destruct(this);
+        if(intersect(another) && (another instanceof EnemyShip || another instanceof EnemyMissile) && ((DrawableSimulableEntity) another).wasAlive){
+            alive = false;
         }
     }
 
