@@ -140,7 +140,7 @@ public class Game {
             drawableSimulable.simulate(timeStep);
             if(drawableSimulable instanceof  EnemyShip) {
                 if(!(drawableSimulable instanceof EnemyShipOnPlace)){
-                    allShipsOnPlace = false;
+                    allShipsOnPlace &= false;
                 }
                 if (random.nextInt((int)(((double)numberOfShips) * 50.0 * (1.0/(double) level)) + 1 ) == 1) {
                     ((EnemyShip) drawableSimulable).fire();
