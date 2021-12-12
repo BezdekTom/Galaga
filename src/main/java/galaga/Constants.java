@@ -1,6 +1,7 @@
 package galaga;
 
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 
 public final class Constants {
     private  Constants(){}
@@ -15,6 +16,9 @@ public final class Constants {
     public static final Image HUMANS_SHIP;
     public static final Image HUMANS_MISSILE;
     public static final Image EXPLOSION;
+
+    public static final Image[] WAVES;
+
     public static final double  MISSILE_SPEED = 200;
     public static final double  DEFAULT_SHIP_HEIGHT = 30;
     public static final int SHIPS_IN_ROW = 6;
@@ -22,9 +26,15 @@ public final class Constants {
     public static final double OSCILATING_SPEED = 20;
     public static final double OSCILATION_DISTANCE = 10;
     public static double SPEED_KOEF = 1;
-
+    public static double WAVE_WIDTH = 70;
 
     static{
+        WAVES = new Image[4];
+        WAVES[0] = new Image(Constants.class.getResourceAsStream("waves_0.png"));
+        WAVES[1] = new Image(Constants.class.getResourceAsStream("waves_1.png"));
+        WAVES[2] = new Image(Constants.class.getResourceAsStream("waves_2.png"));
+        WAVES[3] = new Image(Constants.class.getResourceAsStream("waves_3.png"));
+
         BACKGROUND = new Image(Constants.class.getResourceAsStream("space.jpg"));
 
         HUMANS_SHIP = new Image(Constants.class.getResourceAsStream("galaga_ship.png"));

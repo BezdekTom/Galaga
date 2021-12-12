@@ -14,7 +14,7 @@ public class HealtsDrawer {
     public void draw(GraphicsContext gc, int healths){
         gc.save();
         for(int i = 0; i < healths; i++){
-            gc.drawImage(Constants.HUMANS_SHIP, rightSide - Constants.MARGIN - imageWidth - i*(imageWidth + 5), Constants.MARGIN, imageHeight,imageWidth);
+            gc.drawImage(Constants.HUMANS_SHIP, rightSide - Constants.MARGIN - imageWidth - i*(imageWidth + 5), Constants.MARGIN*0.5, imageHeight,imageWidth);
         }
         gc.restore();
     }

@@ -19,11 +19,11 @@ public class ScoreDrawer {
         score.setScore(score.getScore() + value);
     }
 
-    public void draw(GraphicsContext gc){
+    public void draw(GraphicsContext gc, int level){
         gc.save();
         gc.setFill(Color.WHITE);
-        gc.setFont(Font.font ("Verdana", 10));
-        gc.fillText(score.toString(),5,Constants.MARGIN);
+        gc.setFont(Font.font ("Verdana", 15));
+        gc.fillText(score.toString() + "\t level: "+level,5,Constants.MARGIN*1.5);
 
         gc.restore();
     }

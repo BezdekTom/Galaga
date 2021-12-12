@@ -9,6 +9,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: BLACK;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="galaga.WelcomeControler">
@@ -22,10 +25,26 @@
             </ImageView>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Name: " textFill="#c42f2f">
+                  <Label text="Name: ">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
+                     <textFill>
+                        <LinearGradient endX="0.14393939755179663" endY="0.01515154224453541" startY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.03313840180635452" green="0.2631579041481018" blue="0.04463937506079674" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.023391813039779663" green="0.42105263471603394" blue="0.04327485337853432" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
                   </Label>
                   <TextField fx:id="nameField" promptText="Name">
                      <font>
@@ -37,9 +56,9 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </HBox>
-            <Button fx:id="playButton" mnemonicParsing="false" onAction="#play" text="PLAY">
+            <Button fx:id="playButton" mnemonicParsing="false" onAction="#play" text="PLAY" textFill="#376e40">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />

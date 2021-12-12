@@ -80,6 +80,11 @@ public class MyShip extends Ship{
         if(intersect(another) && (another instanceof EnemyShip || another instanceof EnemyMissile) && ((DrawableSimulableEntity) another).wasAlive){
             alive = false;
         }
+        else if(intersect(another) && another instanceof WaveMissile){
+            for(int i = 0;i<3;i++){
+                simulableListener.destruct(this);
+            }
+        }
     }
 
     public  void moveLeft(){
@@ -102,5 +107,9 @@ public class MyShip extends Ship{
     @Override
     public  void fire(){
         shipListener.fire(new Point2D(horizontalPosition+ pictureWidth/2, verticalPosition + height/2), -1);
+    }
+
+    public Point2D getPosition(){
+        return new Point2D(horizontalPosition, verticalPosition);
     }
 }
