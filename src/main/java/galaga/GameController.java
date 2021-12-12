@@ -12,7 +12,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class GameController implements Controler{
-    private final ScoreDAO scoreDAO = new ScoreDAO();
     private final ScoreFile scoreFile = new ScoreFile();
 
     private  boolean running = true;
@@ -111,7 +110,6 @@ public class GameController implements Controler{
                     }
                     break;
                 case ESCAPE:
-                case B:
                     running = false;
                     saveScore();
                     controlerListener.switchState(GameStates.WELCOME_PAGE);

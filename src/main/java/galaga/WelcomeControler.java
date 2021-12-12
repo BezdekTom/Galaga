@@ -17,6 +17,11 @@ public class WelcomeControler implements  Controler{
     }
 
     @FXML
+    private  void instructions(){
+        controlerListener.switchState(GameStates.CONTROLERS);
+    }
+
+    @FXML
     private  void highScore(){
         controlerListener.switchState(GameStates.SCORE);
     }

@@ -9,7 +9,6 @@ import java.util.List;
 
 public class ScoreControler {
     private  ControlerListener controlerListener;
-    private final ScoreDAO scoreDAO = new ScoreDAO();
     private final ScoreFile scoreFile = new ScoreFile();
 
     @FXML
@@ -19,7 +18,6 @@ public class ScoreControler {
 
     public ScoreControler(){}
     public void showScore(){
-        //initScoreList(scoreDAO.loadScore());
         initScoreList(scoreFile.loadScore());
     }
 
@@ -35,14 +33,12 @@ public class ScoreControler {
 
     @FXML
     private void search(){
-        //List<Score> selectedScore = scoreDAO.loadSelectedScore(searchField.getText());
         List<Score> selectedScore = scoreFile.searchScore(searchField.getText());
         initScoreList(selectedScore);
     }
 
     @FXML
     private  void deleteScore(){
-        //scoreDAO.deleteScore();
         scoreFile.deleteScore();
         showScore();
     }

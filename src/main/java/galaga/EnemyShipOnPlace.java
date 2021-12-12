@@ -74,7 +74,7 @@ public class EnemyShipOnPlace extends EnemyShip{
             visible = false;
             alive = false;
             wasAlive = false;
-            shipOnPlaceListener.startWaveAttac(this,height, type, position);
+            shipOnPlaceListener.startWaveAttac(this,height, type, position, numberOfHits);
         }
     }
 
@@ -97,5 +97,8 @@ public class EnemyShipOnPlace extends EnemyShip{
 
     public boolean isVisible() {
         return visible;
+    }
+    public void setNumberOfHits(int aNumberOfHits){
+        numberOfHits = aNumberOfHits;
     }
 }

@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>vsb-cs-java1</groupId>
-	<artifactId>galaga</artifactId>
+	<artifactId>java1_2021_pip0015</artifactId>
 	<version>0.0.1-SNAPHOST</version>
 	<packaging>jar</packaging>
 	<properties>
@@ -42,11 +42,6 @@
 			<artifactId>junit-jupiter-params</artifactId>
 			<version>5.5.2</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derby</artifactId>
-			<version>10.15.2.0</version>
 		</dependency>
 	</dependencies>
 </project>

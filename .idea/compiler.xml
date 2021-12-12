@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Galaga" />
         <module name="lab01" />
+        <module name="java1_2021_pip0015" />
         <module name="lab01-PIP0015" />
         <module name="Pong-project" />
       </profile>

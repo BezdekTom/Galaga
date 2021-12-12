@@ -40,6 +40,6 @@ public class WaveMissile extends DrawableSimulableEntity{
     }
 
     @Override
-    public void  hit(DrawableSimulable another){
+    public void  hit(DrawableSimulable another) {
     }
 }

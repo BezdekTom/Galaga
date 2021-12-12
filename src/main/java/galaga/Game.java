@@ -227,8 +227,8 @@ public class Game {
 
     private class ShipOnPlaceListenerImpl implements  ShipOnPlaceListener{
         @Override
-        public void startWaveAttac(EnemyShipOnPlace aEnemyShipOnPlace, double aHeight, int aType, Point2D aPosition){
-            added.add(new EnemyShipWaveAttac(aEnemyShipOnPlace,aHeight, aType, aPosition, myShip.getPosition().add(new Point2D(0,-100)), Game.this::removeDrawableSimulable, Game.this::addPoints, new WaveAttacListenerImpl()));
+        public void startWaveAttac(EnemyShipOnPlace aEnemyShipOnPlace, double aHeight, int aType, Point2D aPosition, int aNumberOfHits){
+            added.add(new EnemyShipWaveAttac(aEnemyShipOnPlace,aHeight, aType, aPosition, myShip.getPosition().add(new Point2D(0,-100)), aNumberOfHits, Game.this::removeDrawableSimulable, Game.this::addPoints, new WaveAttacListenerImpl()));
         }
     }
 

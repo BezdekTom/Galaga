@@ -17,6 +17,7 @@ public class App extends Application {
     private GameController gameController;
     private WelcomeControler welcomeController;
     private ScoreControler scoreControler;
+    private ControlersControler controlersControler;
 
     @Override
     public void start(Stage primaryStage){
@@ -28,6 +29,7 @@ public class App extends Application {
         try {
             gameController = null;
             scoreControler = null;
+            controlersControler = null;
             //Construct a main window with a canvas.
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("WelcomeView.fxml"));
 
@@ -53,6 +55,9 @@ public class App extends Application {
                 if(state == GameStates.SCORE){
                     this.showScore(primaryStage, welcomeController.getName());
                 }
+                if(state == GameStates.CONTROLERS){
+                    this.loadInstructions(primaryStage,welcomeController.getName());
+                }
             });
             //Exit program when main window is closed
             primaryStage.setOnCloseRequest(this::exitProgram);
@@ -65,6 +70,7 @@ public class App extends Application {
         try {
             welcomeController = null;
             scoreControler = null;
+
             //Construct a main window with a canvas.
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("GameView.fxml"));
 
@@ -114,6 +120,34 @@ public class App extends Application {
                 }
             });
             scoreControler.showScore();
+            //Exit program when main window is closed
+            primaryStage.setOnCloseRequest(this::exitProgram);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void loadInstructions(Stage primaryStage, String name){
+        try {
+            gameController = null;
+            //Construct a main window with a canvas.
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("Controls.fxml"));
+
+            BorderPane root = loader.load();
+
+            Scene scene = new Scene(root);
+
+
+            primaryStage.setScene(scene);
+            primaryStage.resizableProperty().set(false);
+            primaryStage.setTitle("GALAGA - Bezdek");
+            primaryStage.show();
+            controlersControler = loader.getController();
+            controlersControler.setControlerListener((GameStates state)-> {
+                if (state == GameStates.WELCOME_PAGE) {
+                    this.startWelcome(primaryStage, name);
+                }
+            });
             //Exit program when main window is closed
             primaryStage.setOnCloseRequest(this::exitProgram);
         } catch (Exception e) {

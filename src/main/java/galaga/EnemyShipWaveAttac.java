@@ -12,8 +12,9 @@ public class EnemyShipWaveAttac extends EnemyShip{
     private double shootingTimer = 5;
 
 
-    public EnemyShipWaveAttac(EnemyShipOnPlace aEnemyShipOnPlace,double aHeight, int aType, Point2D aPosition,Point2D aFinalPosition, SimulableListener aSimulableListener , EnemyShipListener aEnemyShipListener, WaveAttacListener aWaveAttacListener){
+    public EnemyShipWaveAttac(EnemyShipOnPlace aEnemyShipOnPlace,double aHeight, int aType, Point2D aPosition,Point2D aFinalPosition, int aNumberOfHits,SimulableListener aSimulableListener , EnemyShipListener aEnemyShipListener, WaveAttacListener aWaveAttacListener){
         super(aHeight, aType, aPosition, aSimulableListener,aEnemyShipListener);
+        numberOfHits = aNumberOfHits;
         waveAttacListener = aWaveAttacListener;
         enemyShipOnPlace = aEnemyShipOnPlace;
         startPosition = position;
@@ -29,9 +30,13 @@ public class EnemyShipWaveAttac extends EnemyShip{
             if(position.getY() < finalPosition.getY() && position.getY() >= startPosition.getY()){
                 position = position.add(speed.multiply(timeStep));
             }
-            else if(shootingTimer >= 0){
+            else if(shootingTimer > 0 && position.getY() >= finalPosition.getY()){
                 fire();
                 shootingTimer -= timeStep;
+            }
+            else if(shootingTimer <= 0 && waveMissile != null){
+                simulableListener.destruct(waveMissile);
+                waveMissile = null;
             }
             else if(position.getY() < startPosition.getY()){
                 merge();
@@ -39,7 +44,9 @@ public class EnemyShipWaveAttac extends EnemyShip{
             else{
                 simulableListener.destruct(waveMissile);
                 waveMissile = null;
-                speed = speed.multiply(-1);
+                if(speed.getY()> 0){
+                    speed = speed.multiply(-1);
+                }
                 position = position.add(speed.multiply(timeStep));
             }
         }
@@ -65,7 +72,7 @@ public class EnemyShipWaveAttac extends EnemyShip{
     @Override
     public  void fire(){
         if(waveMissile == null){
-            waveMissile = new WaveMissile(new Point2D(position.getX() + width*0.5, position.getY()+height));
+            waveMissile = new WaveMissile(new Point2D(finalPosition.getX() + width*0.5, finalPosition.getY()+height));
             waveAttacListener.fire(waveMissile);
         }
     }
@@ -75,6 +82,7 @@ public class EnemyShipWaveAttac extends EnemyShip{
             simulableListener.destruct(waveMissile);
             waveMissile = null;
         }
+        enemyShipOnPlace.setNumberOfHits(numberOfHits);
         enemyShipOnPlace.merge(alive, wasAlive);
         simulableListener.destruct(this);
     }

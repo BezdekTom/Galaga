@@ -20,7 +20,7 @@
          <children>
             <ImageView fitHeight="200.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@galaga.png" />
+                  <Image url="@images/galaga.png" />
                </image>
             </ImageView>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -56,7 +56,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </HBox>
-            <Button fx:id="playButton" mnemonicParsing="false" onAction="#play" text="PLAY" textFill="#376e40">
+            <Button fx:id="playButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#play" prefWidth="150.0" text="PLAY" textFill="#376e40">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -64,7 +64,7 @@
                   <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="highScoreButton" mnemonicParsing="false" onAction="#highScore" text="HIGH SCORE">
+            <Button fx:id="highScoreButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#highScore" prefWidth="150.0" text="HIGH SCORE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -87,6 +87,14 @@
                      </stops>
                   </LinearGradient>
                </textFill>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#instructions" prefWidth="150.0" text="Controls" textFill="#376e40">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
             </Button>
          </children>
       </VBox>
