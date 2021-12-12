@@ -161,4 +161,8 @@ public class GameController implements Controler{
         Collections.sort(previousScore, new ScoreComparator().reversed());
         scoreFile.saveScore(previousScore);
     }
+
+    public String getName(){
+        return game.getScore().getName();
+    }
 }

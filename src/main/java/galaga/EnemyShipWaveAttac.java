@@ -26,7 +26,7 @@ public class EnemyShipWaveAttac extends EnemyShip{
         wasAlive = alive;
 
         if (alive){
-            if(position.getY() <= finalPosition.getY() && position.getY() >= startPosition.getY()){
+            if(position.getY() < finalPosition.getY() && position.getY() >= startPosition.getY()){
                 position = position.add(speed.multiply(timeStep));
             }
             else if(shootingTimer >= 0){

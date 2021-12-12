@@ -39,7 +39,7 @@
                               </Stop>
                               <Stop offset="1.0">
                                  <color>
-                                    <Color red="0.023391813039779663" green="0.42105263471603394" blue="0.04327485337853432" />
+                                    <Color red="0.21568627655506134" green="0.4313725531101227" blue="0.250980406999588" />
                                  </color>
                               </Stop>
                            </stops>
@@ -66,11 +66,27 @@
             </Button>
             <Button fx:id="highScoreButton" mnemonicParsing="false" onAction="#highScore" text="HIGH SCORE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
                </VBox.margin>
+               <textFill>
+                  <LinearGradient endX="0.14393939755179663" endY="0.01515154224453541" startY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.03313840180635452" green="0.2631579041481018" blue="0.04463937506079674" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.21568627655506134" green="0.4313725531101227" blue="0.250980406999588" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </textFill>
             </Button>
          </children>
       </VBox>

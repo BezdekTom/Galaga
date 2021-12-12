@@ -20,32 +20,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage){
-        startWelcome(primaryStage);
+        startWelcome(primaryStage,"");
     }
-    /*{
-        try {
-            //Construct a main window with a canvas.
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("GameView.fxml"));
-
-            BorderPane root = loader.load();
-
-            Scene scene = new Scene(root);
 
 
-            primaryStage.setScene(scene);
-            primaryStage.resizableProperty().set(false);
-            primaryStage.setTitle("GALAGA - Bezdek");
-            primaryStage.show();
-            gameController = loader.getController();
-            gameController.startGame();
-            //Exit program when main window is closed
-            primaryStage.setOnCloseRequest(this::exitProgram);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
-
-    private void startWelcome(Stage primaryStage){
+    private void startWelcome(Stage primaryStage, String name){
         try {
             gameController = null;
             scoreControler = null;
@@ -62,12 +41,17 @@ public class App extends Application {
             primaryStage.setTitle("GALAGA - Bezdek");
             primaryStage.show();
             welcomeController = loader.getController();
+            welcomeController.setName(name);
             welcomeController.setControlerListener((GameStates state)-> {
                 if (state == GameStates.GAME) {
-                    this.starGame(primaryStage, welcomeController.getName());
+                    String inputName = welcomeController.getName();
+                    if(inputName.equals("")){
+                        inputName = "Galaga Player";
+                    }
+                    this.starGame(primaryStage, inputName);
                 }
                 if(state == GameStates.SCORE){
-                    this.showScore(primaryStage);
+                    this.showScore(primaryStage, welcomeController.getName());
                 }
             });
             //Exit program when main window is closed
@@ -96,7 +80,7 @@ public class App extends Application {
             gameController = loader.getController();
             gameController.setControlerListener((GameStates state)-> {
                 if (state == GameStates.WELCOME_PAGE) {
-                    this.startWelcome(primaryStage);
+                    this.startWelcome(primaryStage,gameController.getName());
                 }
             });
             gameController.startGame(name);
@@ -107,7 +91,7 @@ public class App extends Application {
         }
     }
 
-    private void showScore(Stage primaryStage){
+    private void showScore(Stage primaryStage, String name){
         try {
             gameController = null;
             welcomeController = null;
@@ -126,7 +110,7 @@ public class App extends Application {
             scoreControler = loader.getController();
             scoreControler.setControlerListener((GameStates state)-> {
                 if (state == GameStates.WELCOME_PAGE) {
-                    this.startWelcome(primaryStage);
+                    this.startWelcome(primaryStage, name);
                 }
             });
             scoreControler.showScore();

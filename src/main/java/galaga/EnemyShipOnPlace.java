@@ -70,7 +70,7 @@ public class EnemyShipOnPlace extends EnemyShip{
     }
 
     public void waveAttac(){
-        if(visible){
+        if(visible && alive){
             visible = false;
             alive = false;
             wasAlive = false;

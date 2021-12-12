@@ -28,4 +28,7 @@ public class WelcomeControler implements  Controler{
     public  String getName(){
         return nameField.getText();
     }
+    public void setName(String name){
+        nameField.setText(name);
+    }
 }

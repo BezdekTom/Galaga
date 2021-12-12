@@ -49,7 +49,7 @@ public final class Constants {
         ENEMY_SHIPS[3] = new Image(Constants.class.getResourceAsStream("enemy_ship_4.png"));
 
         NUMBER_OF_LIVES = new int[4];
-        NUMBER_OF_LIVES[0] = 1;
+        NUMBER_OF_LIVES[0] = 2;
         NUMBER_OF_LIVES[1] = 2;
         NUMBER_OF_LIVES[2] = 3;
         NUMBER_OF_LIVES[3] = 1;

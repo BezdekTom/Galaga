@@ -23,7 +23,7 @@ public class ScoreDrawer {
         gc.save();
         gc.setFill(Color.WHITE);
         gc.setFont(Font.font ("Verdana", 15));
-        gc.fillText(score.toString() + "\t level: "+level,5,Constants.MARGIN*1.5);
+        gc.fillText(score.getName()+"\t"+score.getScore() + "\t level: "+level,5,Constants.MARGIN*1.5);
 
         gc.restore();
     }

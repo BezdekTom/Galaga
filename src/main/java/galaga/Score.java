@@ -10,7 +10,7 @@ public class Score {
     }
     @Override
     public String toString(){
-        return (name + "\t" + score);
+        return (name + "\t\t\t\t\t" + score);
     }
 
     public int getScore(){
