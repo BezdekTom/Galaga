@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 
-public class MyShip extends Ship{
+class MyShip extends Ship{
     private  final double maxSpeed;
     private  int direction = 0;
     private double horizontalPosition;
@@ -18,7 +18,7 @@ public class MyShip extends Ship{
     private  final double rightBorder;
     private  double pictureWidth;
 
-    public  MyShip(double aHeight, double aVerticalPosition, double absolutSpeed, double gameWidth){
+    MyShip(double aHeight, double aVerticalPosition, double absolutSpeed, double gameWidth){
         maxSpeed = absolutSpeed;
         verticalPosition = aVerticalPosition;
         height = aHeight;
@@ -27,17 +27,17 @@ public class MyShip extends Ship{
         horizontalPosition = (rightBorder - leftBorder - pictureWidth)/2;
     }
 
-    public  MyShip(double aHeight, double aVerticalPosition, double absolutSpeed, double gameWidth, ShipListener aShipListener){
+    MyShip(double aHeight, double aVerticalPosition, double absolutSpeed, double gameWidth, ShipListener aShipListener){
         this(aHeight,aVerticalPosition,absolutSpeed,gameWidth);
         shipListener = aShipListener;
     }
 
-    public MyShip(double aHeight, double aVerticalPosition, double absolutSpeed, double gameWidth, SimulableListener aSimulableListener){
+    MyShip(double aHeight, double aVerticalPosition, double absolutSpeed, double gameWidth, SimulableListener aSimulableListener){
         this(aHeight,aVerticalPosition,absolutSpeed,gameWidth);
         simulableListener = aSimulableListener;
     }
 
-    public  MyShip(double aHeight, double aHorizontalPosition, double aVerticalPosition, double absolutSpeed, double gameWidth){
+    MyShip(double aHeight, double aHorizontalPosition, double aVerticalPosition, double absolutSpeed, double gameWidth){
         maxSpeed = absolutSpeed;
         horizontalPosition = aHorizontalPosition;
         verticalPosition = aVerticalPosition;
@@ -89,20 +89,20 @@ public class MyShip extends Ship{
         }
     }
 
-    public  void moveLeft(){
+    void moveLeft(){
         direction -= 1;
     }
 
-    public  void moveRight(){
+    void moveRight(){
 
         direction += 1;
     }
 
-    public  void stop(){
+    void stop(){
         direction = 0;
     }
 
-    public  double getHorizontalPosition(){
+    double getHorizontalPosition(){
         return  horizontalPosition + pictureWidth/2;
     }
 
@@ -111,7 +111,7 @@ public class MyShip extends Ship{
         shipListener.fire(new Point2D(horizontalPosition+ pictureWidth/2, verticalPosition + height/2), -1);
     }
 
-    public Point2D getPosition(){
+    Point2D getPosition(){
         return new Point2D(horizontalPosition, verticalPosition);
     }
 }

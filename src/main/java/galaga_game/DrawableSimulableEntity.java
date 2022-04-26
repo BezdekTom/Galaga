@@ -4,7 +4,7 @@ import javafx.geometry.BoundingBox;
 import javafx.scene.canvas.GraphicsContext;
 import lombok.Setter;
 
-public abstract class DrawableSimulableEntity implements  DrawableSimulable{
+abstract class DrawableSimulableEntity implements  DrawableSimulable{
 
     protected SimulableListener simulableListener;
     @Setter
@@ -28,7 +28,7 @@ public abstract class DrawableSimulableEntity implements  DrawableSimulable{
 
     }
 
-    public void setSimulableListener(SimulableListener aSimulableListener){
+    void setSimulableListener(SimulableListener aSimulableListener){
         simulableListener = aSimulableListener;
     }
 

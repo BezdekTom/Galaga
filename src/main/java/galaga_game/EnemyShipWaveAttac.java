@@ -2,7 +2,7 @@ package galaga_game;
 
 import javafx.geometry.Point2D;
 
-public class EnemyShipWaveAttac extends EnemyShip{
+class EnemyShipWaveAttac extends EnemyShip{
     private EnemyShipOnPlace enemyShipOnPlace;
     private WaveMissile waveMissile;
     private WaveAttacListener waveAttacListener;
@@ -13,7 +13,7 @@ public class EnemyShipWaveAttac extends EnemyShip{
     private boolean shooted = false;
 
 
-    public EnemyShipWaveAttac(EnemyShipOnPlace aEnemyShipOnPlace,double aHeight, int aType, Point2D aPosition,Point2D aFinalPosition, int aNumberOfHits,SimulableListener aSimulableListener , EnemyShipListener aEnemyShipListener, WaveAttacListener aWaveAttacListener){
+    EnemyShipWaveAttac(EnemyShipOnPlace aEnemyShipOnPlace,double aHeight, int aType, Point2D aPosition,Point2D aFinalPosition, int aNumberOfHits,SimulableListener aSimulableListener , EnemyShipListener aEnemyShipListener, WaveAttacListener aWaveAttacListener){
         super(aHeight, aType, aPosition, aSimulableListener,aEnemyShipListener);
         numberOfHits = aNumberOfHits;
         waveAttacListener = aWaveAttacListener;

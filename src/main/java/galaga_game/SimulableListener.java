@@ -1,5 +1,5 @@
 package galaga_game;
 
-public interface SimulableListener {
+interface SimulableListener {
     void destruct(DrawableSimulable drawableSimulable);
 }

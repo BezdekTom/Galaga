@@ -2,14 +2,14 @@ package galaga_game;
 
 import javafx.geometry.Point2D;
 
-public class MoveSideEnemyShip extends EnemyShip{
+class MoveSideEnemyShip extends EnemyShip{
     private final int direction;
     private final int previousDirection;
     private double widthBorder;
     private final int speed = 5;
     private SideMovingShipListener sideMovingShipListener;
 
-    public MoveSideEnemyShip(double aHeight, int aType, Point2D aPosition, int numberFromSide, int aDirection, int aPreviousDirection, double gameWidth, SimulableListener aSimulableListener,ShipListener aShipListener, EnemyShipListener aEnemyShipListener, SideMovingShipListener aSideMovingShipListener)
+    MoveSideEnemyShip(double aHeight, int aType, Point2D aPosition, int numberFromSide, int aDirection, int aPreviousDirection, double gameWidth, SimulableListener aSimulableListener,ShipListener aShipListener, EnemyShipListener aEnemyShipListener, SideMovingShipListener aSideMovingShipListener)
     {
         super(aHeight, aType, aPosition, aSimulableListener, aShipListener, aEnemyShipListener);
         previousDirection = aPreviousDirection;
@@ -26,7 +26,7 @@ public class MoveSideEnemyShip extends EnemyShip{
 
     }
 
-    public MoveSideEnemyShip(int aType, Point2D aPosition, int numberFromSide, int aDirection, int previousDirection, double gameWidth, SimulableListener aSimulableListener,ShipListener aShipListener, EnemyShipListener aEnemyShipListener, SideMovingShipListener aSideMovingShipListener)
+    MoveSideEnemyShip(int aType, Point2D aPosition, int numberFromSide, int aDirection, int previousDirection, double gameWidth, SimulableListener aSimulableListener,ShipListener aShipListener, EnemyShipListener aEnemyShipListener, SideMovingShipListener aSideMovingShipListener)
     {
         this(Constants.DEFAULT_SHIP_HEIGHT, aType, aPosition, numberFromSide, aDirection, previousDirection, gameWidth, aSimulableListener, aShipListener, aEnemyShipListener, aSideMovingShipListener);
     }

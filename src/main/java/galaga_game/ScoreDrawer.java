@@ -5,19 +5,19 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import lombok.Getter;
 
-public class ScoreDrawer {
+class ScoreDrawer {
 	@Getter
     private  Score score;
 
-    public ScoreDrawer(String name){
+    ScoreDrawer(String name){
         score = new Score(name);
     }
 
-    public void addScore(int value){
+    void addScore(int value){
         score.setScore(score.getScore() + value);
     }
 
-    public void draw(GraphicsContext gc, int level){
+    void draw(GraphicsContext gc, int level){
         gc.save();
         gc.setFill(Color.WHITE);
         gc.setFont(Font.font ("Verdana", 15));

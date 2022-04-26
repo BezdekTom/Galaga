@@ -1,5 +1,5 @@
 package galaga_game;
 
-public interface EnemyShipListener {
+interface EnemyShipListener {
     void addPoints(int Points);
 }

@@ -2,7 +2,7 @@ package galaga_game;
 
 import javafx.geometry.Point2D;
 
-public class EnemyShipArrive extends EnemyShip{
+class EnemyShipArrive extends EnemyShip{
     private final double diameter;
     private final Point2D centrOfCircle;
     private final int direction;
@@ -11,7 +11,7 @@ public class EnemyShipArrive extends EnemyShip{
     private ArriveShipListener arriveShipListener;
     private double time = 0;
 
-    public  EnemyShipArrive(double aHeight, int aType,int aNumberFromSide, Point2D aPosition,double gameWidth, int aDirection,int aNextShipDirection, SimulableListener aSimulableListener, EnemyShipListener aEnemyShipListener, ArriveShipListener aArriveShipListener){
+    EnemyShipArrive(double aHeight, int aType,int aNumberFromSide, Point2D aPosition,double gameWidth, int aDirection,int aNextShipDirection, SimulableListener aSimulableListener, EnemyShipListener aEnemyShipListener, ArriveShipListener aArriveShipListener){
         super(aHeight, aType, aPosition, aSimulableListener, aEnemyShipListener);
         nextShipDirection = aNextShipDirection;
         arriveShipListener = aArriveShipListener;
@@ -33,7 +33,7 @@ public class EnemyShipArrive extends EnemyShip{
         direction = aDirection;
     }
 
-    public  EnemyShipArrive(int aType,int aNumberFromSide, Point2D aPosition,double gameWidth, int aDirection,int aNextShipDirection, SimulableListener aSimulableListener, EnemyShipListener aEnemyShipListener, ArriveShipListener aArriveShipListener){
+    EnemyShipArrive(int aType,int aNumberFromSide, Point2D aPosition,double gameWidth, int aDirection,int aNextShipDirection, SimulableListener aSimulableListener, EnemyShipListener aEnemyShipListener, ArriveShipListener aArriveShipListener){
         this(Constants.DEFAULT_SHIP_HEIGHT, aType, aNumberFromSide, aPosition, gameWidth, aDirection, aNextShipDirection, aSimulableListener, aEnemyShipListener, aArriveShipListener);
     }
 

@@ -6,12 +6,12 @@ import javafx.scene.text.Font;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class TextDrawer {
+class TextDrawer {
     private final double gameHeight;
     //private final double gameWidth;
 
 
-    public void drawGameOver(GraphicsContext gc, int score){
+    void drawGameOver(GraphicsContext gc, int score){
         gc.save();
         gc.setFill(Color.RED);
         gc.setFont(Font.font ("Verdana", 50));
@@ -26,7 +26,7 @@ public class TextDrawer {
         gc.restore();
     }
 
-    public void drawGetHit(GraphicsContext gc, int numberOfLives){
+    void drawGetHit(GraphicsContext gc, int numberOfLives){
         gc.save();
         gc.setFill(Color.GREEN);
         gc.setFont(Font.font ("Verdana", 40));
@@ -39,7 +39,7 @@ public class TextDrawer {
         gc.restore();
     }
 
-    public void drawNextLevel(GraphicsContext gc, int level){
+    void drawNextLevel(GraphicsContext gc, int level){
         gc.save();
         gc.setFill(Color.WHITE);
         gc.setFont(Font.font ("Verdana", 40));

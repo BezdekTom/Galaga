@@ -1,32 +1,31 @@
 package galaga_game;
 
 import javafx.scene.image.Image;
-import javafx.scene.text.Font;
 
-public final class Constants {
+final class Constants {
     private  Constants(){}
 
-    public static final Image BACKGROUND;
+    static final Image BACKGROUND;
 
-    public static final Image[] ENEMY_SHIPS;
-    public static final int[] NUMBER_OF_LIVES;
-    public static final int[] POINTS;
-    public static final Image[] ENEMY_MISSILES;
+    static final Image[] ENEMY_SHIPS;
+    static final int[] NUMBER_OF_LIVES;
+    static final int[] POINTS;
+    static final Image[] ENEMY_MISSILES;
 
-    public static final Image HUMANS_SHIP;
-    public static final Image HUMANS_MISSILE;
+    static final Image HUMANS_SHIP;
+    static final Image HUMANS_MISSILE;
     public static final Image EXPLOSION;
 
-    public static final Image[] WAVES;
+    static final Image[] WAVES;
 
-    public static final double  MISSILE_SPEED = 200;
-    public static final double  DEFAULT_SHIP_HEIGHT = 30;
-    public static final int SHIPS_IN_ROW = 6;
-    public static final double MARGIN = 20;
-    public static final double OSCILATING_SPEED = 20;
-    public static final double OSCILATION_DISTANCE = 10;
-    public static double SPEED_KOEF = 1;
-    public static double WAVE_WIDTH = 70;
+    static final double  MISSILE_SPEED = 200;
+    static final double  DEFAULT_SHIP_HEIGHT = 30;
+    static final int SHIPS_IN_ROW = 6;
+    static final double MARGIN = 20;
+    static final double OSCILATING_SPEED = 20;
+    static final double OSCILATION_DISTANCE = 10;
+    static double SPEED_KOEF = 1;
+    static double WAVE_WIDTH = 70;
 
     static{
         WAVES = new Image[4];

@@ -5,7 +5,7 @@ import javafx.scene.canvas.GraphicsContext;
 import lombok.Getter;
 import lombok.Setter;
 
-public class EnemyShipOnPlace extends EnemyShip{
+class EnemyShipOnPlace extends EnemyShip{
     private final Point2D centerPosition;  
     @Getter
     private boolean visible = true;
@@ -63,17 +63,17 @@ public class EnemyShipOnPlace extends EnemyShip{
         }
     }
 
-    public void startMoving(){
+    void startMoving(){
         moving = true;
     }
 
-    public void merge(boolean aAlive, boolean aWasAlive){
+    void merge(boolean aAlive, boolean aWasAlive){
         visible = true;
         alive = aAlive;
         wasAlive =aWasAlive;
     }
 
-    public void waveAttac(){
+    void waveAttac(){
         if(visible && alive){
             visible = false;
             alive = false;

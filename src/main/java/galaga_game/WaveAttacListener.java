@@ -1,5 +1,5 @@
 package galaga_game;
 
-public interface WaveAttacListener {
+interface WaveAttacListener {
     void fire(WaveMissile waveMissile);
 }

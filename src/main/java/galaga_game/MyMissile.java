@@ -4,7 +4,7 @@ import javafx.geometry.BoundingBox;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class MyMissile extends  DrawableSimulableEntity{
+class MyMissile extends  DrawableSimulableEntity{
     private  double horizontalPosition;
     private  double verticalPosition;
     private  final double speed;
@@ -13,7 +13,7 @@ public class MyMissile extends  DrawableSimulableEntity{
     private  double width;
     private  Image image = Constants.HUMANS_MISSILE;
 
-    public  MyMissile(double aHorizontalPosition, double aVerticalPosition,double aHeight, double aSpeed, double aTopBorder){
+    MyMissile(double aHorizontalPosition, double aVerticalPosition,double aHeight, double aSpeed, double aTopBorder){
         speed = aSpeed;
         topBorder = aTopBorder;
         height = aHeight;
@@ -22,7 +22,7 @@ public class MyMissile extends  DrawableSimulableEntity{
         horizontalPosition = aHorizontalPosition - (height/ image.getHeight())*image.getWidth() / 2;
     }
 
-    public  MyMissile(double aHorizontalPosition, double aVerticalPosition,double aHeight, double aSpeed, double aTopBorder, SimulableListener aSimulableListener){
+    MyMissile(double aHorizontalPosition, double aVerticalPosition,double aHeight, double aSpeed, double aTopBorder, SimulableListener aSimulableListener){
         this(aHorizontalPosition,aVerticalPosition,aHeight,aSpeed,aTopBorder);
         simulableListener = aSimulableListener;
     }

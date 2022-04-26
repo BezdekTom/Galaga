@@ -6,13 +6,13 @@ import javafx.geometry.Point2D;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-public class WaveMissile extends DrawableSimulableEntity{
+class WaveMissile extends DrawableSimulableEntity{
     private  double horizontalPosition;
     private  double verticalPosition;
     private int wavesNumber = 0;
     private Image waveImage = Constants.WAVES[wavesNumber];
 
-    public WaveMissile(Point2D centerPosition){
+    WaveMissile(Point2D centerPosition){
         wasAlive = true;
         alive  = true;
         verticalPosition = centerPosition.getY();
