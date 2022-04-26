@@ -25,7 +25,7 @@
             </ImageView>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Name: ">
+                  <Label fx:id="nameText" text="Name: ">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -56,7 +56,7 @@
                   <Insets bottom="10.0" top="10.0" />
                </VBox.margin>
             </HBox>
-            <Button fx:id="playButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#play" prefWidth="150.0" text="PLAY" textFill="#376e40">
+            <Button fx:id="playButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#play" prefWidth="200.0" text="PLAY" textFill="#376e40">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -64,7 +64,7 @@
                   <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="highScoreButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#highScore" prefWidth="150.0" text="HIGH SCORE">
+            <Button fx:id="highScoreButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#highScore" prefWidth="200.0" text="HIGH SCORE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -88,7 +88,7 @@
                   </LinearGradient>
                </textFill>
             </Button>
-            <Button mnemonicParsing="false" onAction="#instructions" prefWidth="150.0" text="Controls" textFill="#376e40">
+            <Button fx:id="controlsButton" mnemonicParsing="false" onAction="#instructions" prefWidth="200.0" text="Controls" textFill="#376e40">
                <VBox.margin>
                   <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
                </VBox.margin>
@@ -99,4 +99,20 @@
          </children>
       </VBox>
    </center>
+   <top>
+      <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#setEnglish" prefHeight="25.0" prefWidth="35.0" text="EN">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#setCzech" prefHeight="25.0" prefWidth="35.0" text="CZ">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>

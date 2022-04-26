@@ -1,20 +1,27 @@
 package galaga;
 
 import javafx.animation.AnimationTimer;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.Collections;
 import java.util.List;
 
-public class GameController implements Controler{
+import galaga_game.Game;
+import galaga_game.Score;
+import galaga_game.ScoreComparator;
+import galaga_game.ScoreFile;
+
+@Log4j2
+public class GameController {
     private final ScoreFile scoreFile = new ScoreFile();
 
     private  boolean running = true;
+    @Setter
     private  ControlerListener controlerListener;
     private  boolean animationRunning = false;
     private  Game game;
@@ -28,9 +35,6 @@ public class GameController implements Controler{
 
     @FXML
     private Button rightButton;
-
-    public GameController() {
-    }
 
     public void startGame(String name) {
         this.game = new Game(canvas.getWidth(), canvas.getHeight(), name);
@@ -144,10 +148,6 @@ public class GameController implements Controler{
 
     }
 
-    public void setControlerListener(ControlerListener aControlerListener){
-        controlerListener = aControlerListener;
-    }
-
     private  void saveScore(){
         //List<Score> previousScore = scoreDAO.loadScore();
         //previousScore.add(game.getScore());
@@ -158,6 +158,7 @@ public class GameController implements Controler{
         previousScore.add(game.getScore());
         Collections.sort(previousScore, new ScoreComparator().reversed());
         scoreFile.saveScore(previousScore);
+        log.info("Score saved");
     }
 
     public String getName(){

@@ -1,5 +1,6 @@
 package galaga;
 
+import galaga_game.MyResourceBundle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,7 +8,10 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public class App extends Application {
 
     public static void main(String[] args) {
@@ -44,11 +48,12 @@ public class App extends Application {
             primaryStage.show();
             welcomeController = loader.getController();
             welcomeController.setName(name);
+            welcomeController.rightTexts();
             welcomeController.setControlerListener((GameStates state)-> {
                 if (state == GameStates.GAME) {
                     String inputName = welcomeController.getName();
                     if(inputName.equals("")){
-                        inputName = "Galaga Player";
+                        inputName = MyResourceBundle.getBundle().getString("player");
                     }
                     this.starGame(primaryStage, inputName);
                 }
@@ -62,7 +67,7 @@ public class App extends Application {
             //Exit program when main window is closed
             primaryStage.setOnCloseRequest(this::exitProgram);
         } catch (Exception e) {
-            e.printStackTrace();
+        	log.error("Exception ocuers: {}", e.toString());
         }
     }
 
@@ -93,7 +98,7 @@ public class App extends Application {
             //Exit program when main window is closed
             primaryStage.setOnCloseRequest(this::exitProgram);
         } catch (Exception e) {
-            e.printStackTrace();
+        	log.error("Exception ocuers: {}", e.toString());
         }
     }
 
@@ -114,6 +119,7 @@ public class App extends Application {
             primaryStage.setTitle("GALAGA - Bezdek");
             primaryStage.show();
             scoreControler = loader.getController();
+            scoreControler.rightTexts();
             scoreControler.setControlerListener((GameStates state)-> {
                 if (state == GameStates.WELCOME_PAGE) {
                     this.startWelcome(primaryStage, name);
@@ -123,7 +129,7 @@ public class App extends Application {
             //Exit program when main window is closed
             primaryStage.setOnCloseRequest(this::exitProgram);
         } catch (Exception e) {
-            e.printStackTrace();
+        	log.error("Exception ocuers: {}", e.toString());
         }
     }
 
@@ -143,6 +149,7 @@ public class App extends Application {
             primaryStage.setTitle("GALAGA - Bezdek");
             primaryStage.show();
             controlersControler = loader.getController();
+            controlersControler.rightTexts();
             controlersControler.setControlerListener((GameStates state)-> {
                 if (state == GameStates.WELCOME_PAGE) {
                     this.startWelcome(primaryStage, name);
@@ -151,7 +158,7 @@ public class App extends Application {
             //Exit program when main window is closed
             primaryStage.setOnCloseRequest(this::exitProgram);
         } catch (Exception e) {
-            e.printStackTrace();
+        	log.error("Exception ocuers: {}", e.toString());
         }
     }
 

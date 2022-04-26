@@ -19,17 +19,17 @@
          </BorderPane.margin></ListView>
    </center>
    <top>
-      <VBox BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Label text="High Score" textFill="#faf6f6">
+            <Label fx:id="headline" alignment="CENTER" contentDisplay="CENTER" text="High Score" textFill="#faf6f6">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
                <VBox.margin>
-                  <Insets left="110.0" top="10.0" />
+                  <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <HBox fx:id="nameField">
+            <HBox fx:id="nameField" alignment="CENTER_LEFT">
                <children>
                   <TextField fx:id="searchField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Name">
                      <HBox.margin>
@@ -39,7 +39,7 @@
                         <Font size="14.0" />
                      </font>
                   </TextField>
-                  <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#search" text="Search">
+                  <Button fx:id="searchButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#search" text="Search">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="15.0" />
                      </HBox.margin>
@@ -60,7 +60,7 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="53.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#deleteScore" text="Delete Score">
+            <Button fx:id="deleteButton" alignment="CENTER" mnemonicParsing="false" onAction="#deleteScore" text="Delete Score">
                <font>
                   <Font size="14.0" />
                </font>
@@ -68,7 +68,7 @@
                   <Insets right="55.0" />
                </HBox.margin>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#returnToMainMenu" text="Back to MainMenu">
+            <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#returnToMainMenu" text="Back to MainMenu">
                <font>
                   <Font size="14.0" />
                </font>
