@@ -9,6 +9,9 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.Collections;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 
@@ -159,14 +162,27 @@ public class GameController {
         //Collections.sort(previousScore, new ScoreComparator().reversed());
         //scoreDAO.saveScore(previousScore);
     	Score score = game.getScore();
-    	
-        if(scoreServerClient.updateScore(score) == false) {
-        	scoreServerClient.createScore(score);
-        }
-        log.info("Score saved");
+        try{
+        	saveAsync(score);
+        }catch (Exception e) {
+			log.error("Exception ocuers: {}",e.toString());
+		}
     }
 
     public String getName(){
         return game.getScore().getName();
+    }
+    
+    private Future<String> saveAsync(Score score) throws InterruptedException{
+    	CompletableFuture<String> completableFuture = new CompletableFuture<>();
+    	
+    	Executors.newSingleThreadExecutor().submit(()->{
+    		if(scoreServerClient.updateScore(score) == false) {
+            	scoreServerClient.createScore(score);
+            }
+            log.info("Score saved");
+    	});
+    	
+    	return completableFuture;
     }
 }

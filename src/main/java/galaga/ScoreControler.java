@@ -54,7 +54,7 @@ public class ScoreControler {
 
     public void showScore(){
         initScoreList(scoreServerClient.getScore());
-        log.fatal("Score loaded");
+        log.info("Score loaded");
     }
 
     @FXML
