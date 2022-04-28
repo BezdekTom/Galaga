@@ -22,7 +22,7 @@ public interface ScoreServerClient {
 	@GET
 	@Path("score/{name}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Score getScore(String name);
+	public Score getScore(@PathParam("name") String name);
 	
 	@POST
 	@Path("score")

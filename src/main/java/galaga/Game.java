@@ -233,7 +233,7 @@ public class Game {
 
     public  Score getScore(){
         Score score = scoreDrawer.getScore();
-    	score.setTime(ZonedDateTime.now());
+    	score.setTimeEpoch(ZonedDateTime.now().toEpochSecond());
         return  score;
     }
 

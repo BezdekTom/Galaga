@@ -8,15 +8,17 @@ import javafx.scene.input.KeyEvent;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.Collections;
+
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 
-//import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
+import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
 
 
 @Log4j2
 public class GameController {
 	
-    private final ScoreServerClient scoreServerClient = JAXRSClientFactory.create("http://localhost:8080", ScoreServerClient.class);
+    private final ScoreServerClient scoreServerClient;
 
     private  boolean running = true;
     @Setter
@@ -33,6 +35,11 @@ public class GameController {
 
     @FXML
     private Button rightButton;
+    
+    public GameController() {
+    	scoreServerClient = JAXRSClientFactory.create("http://localhost:8080", ScoreServerClient.class,
+    	    		Collections.singletonList(new JacksonJaxbJsonProvider()));
+    }
 
     public void startGame(String name) {
         this.game = new Game(canvas.getWidth(), canvas.getHeight(), name);
@@ -153,9 +160,9 @@ public class GameController {
         //scoreDAO.saveScore(previousScore);
     	Score score = game.getScore();
     	
-        //if(scoreServerClient.updateScore(score) == false) {
+        if(scoreServerClient.updateScore(score) == false) {
         	scoreServerClient.createScore(score);
-        //}
+        }
         log.info("Score saved");
     }
 

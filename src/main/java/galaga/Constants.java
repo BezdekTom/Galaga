@@ -29,23 +29,23 @@ final class Constants {
 
     static{
         WAVES = new Image[4];
-        WAVES[0] = new Image(Constants.class.getResourceAsStream("images/waves_0.png"));
-        WAVES[1] = new Image(Constants.class.getResourceAsStream("images/waves_1.png"));
-        WAVES[2] = new Image(Constants.class.getResourceAsStream("images/waves_2.png"));
-        WAVES[3] = new Image(Constants.class.getResourceAsStream("images/waves_3.png"));
+        WAVES[0] = new Image(Constants.class.getResourceAsStream("images/game/waves_0.png"));
+        WAVES[1] = new Image(Constants.class.getResourceAsStream("images/game/waves_1.png"));
+        WAVES[2] = new Image(Constants.class.getResourceAsStream("images/game/waves_2.png"));
+        WAVES[3] = new Image(Constants.class.getResourceAsStream("images/game/waves_3.png"));
 
-        BACKGROUND = new Image(Constants.class.getResourceAsStream("images/space.jpg"));
+        BACKGROUND = new Image(Constants.class.getResourceAsStream("images/game/space.jpg"));
 
-        HUMANS_SHIP = new Image(Constants.class.getResourceAsStream("images/galaga_ship.png"));
-        HUMANS_MISSILE = new Image(Constants.class.getResourceAsStream("images/my_missile.jpg"));
+        HUMANS_SHIP = new Image(Constants.class.getResourceAsStream("images/game/galaga_ship.png"));
+        HUMANS_MISSILE = new Image(Constants.class.getResourceAsStream("images/game/my_missile.jpg"));
 
-        EXPLOSION = new Image(Constants.class.getResourceAsStream("images/explosion.gif"));
+        EXPLOSION = new Image(Constants.class.getResourceAsStream("images/game/explosion.gif"));
 
         ENEMY_SHIPS = new Image[4];
-        ENEMY_SHIPS[0] = new Image(Constants.class.getResourceAsStream("images/galaga_enemy_ship.png"));
-        ENEMY_SHIPS[1] = new Image(Constants.class.getResourceAsStream("images/galaga_enemy_ship_2.png"));
-        ENEMY_SHIPS[2] = new Image(Constants.class.getResourceAsStream("images/enemy_ship_3.png"));
-        ENEMY_SHIPS[3] = new Image(Constants.class.getResourceAsStream("images/enemy_ship_4.png"));
+        ENEMY_SHIPS[0] = new Image(Constants.class.getResourceAsStream("images/game/galaga_enemy_ship.png"));
+        ENEMY_SHIPS[1] = new Image(Constants.class.getResourceAsStream("images/game/galaga_enemy_ship_2.png"));
+        ENEMY_SHIPS[2] = new Image(Constants.class.getResourceAsStream("images/game/enemy_ship_3.png"));
+        ENEMY_SHIPS[3] = new Image(Constants.class.getResourceAsStream("images/game/enemy_ship_4.png"));
 
         NUMBER_OF_LIVES = new int[4];
         NUMBER_OF_LIVES[0] = 2;
@@ -60,9 +60,9 @@ final class Constants {
         POINTS[3] = 30;
 
         ENEMY_MISSILES = new Image[4];
-        ENEMY_MISSILES[0] = new Image(Constants.class.getResourceAsStream("images/enemy_missile.png"));
-        ENEMY_MISSILES[1] = new Image(Constants.class.getResourceAsStream("images/enemy_missile_2.png"));
-        ENEMY_MISSILES[2] = new Image(Constants.class.getResourceAsStream("images/enemy_missile.png"));
-        ENEMY_MISSILES[3] = new Image(Constants.class.getResourceAsStream("images/enemy_missile_4.gif"));
+        ENEMY_MISSILES[0] = new Image(Constants.class.getResourceAsStream("images/game/enemy_missile.png"));
+        ENEMY_MISSILES[1] = new Image(Constants.class.getResourceAsStream("images/game/enemy_missile_2.png"));
+        ENEMY_MISSILES[2] = new Image(Constants.class.getResourceAsStream("images/game/enemy_missile.png"));
+        ENEMY_MISSILES[3] = new Image(Constants.class.getResourceAsStream("images/game/enemy_missile_4.gif"));
     }
 }

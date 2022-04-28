@@ -1,5 +1,6 @@
 package galaga;
 
+import com.sun.istack.NotNull;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,16 +10,24 @@ import javafx.scene.control.TextField;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+
+import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
+
+import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
 
 @Log4j2
 public class ScoreControler {
+	private final ScoreServerClient scoreServerClient;
+	
 	@Setter
     private  ControlerListener controlerListener;
-    private final ScoreFile scoreFile = new ScoreFile();
 
     @FXML
-    private ListView<Score> scoreList;
+    private ListView<String> scoreList;
     @FXML
     private TextField searchField;
     @FXML
@@ -29,6 +38,11 @@ public class ScoreControler {
     private Button deleteButton;
     @FXML
     private Button backButton;
+    
+    public ScoreControler() {
+    	scoreServerClient = JAXRSClientFactory.create("http://localhost:8080", ScoreServerClient.class,
+	    		Collections.singletonList(new JacksonJaxbJsonProvider()));
+    }
 
     public void rightTexts() {
     	headline.setText(MyResourceBundle.getBundle().getString("high_score"));
@@ -39,7 +53,7 @@ public class ScoreControler {
     }
 
     public void showScore(){
-        initScoreList(scoreFile.loadScore());
+        initScoreList(scoreServerClient.getScore());
         log.fatal("Score loaded");
     }
 
@@ -50,19 +64,29 @@ public class ScoreControler {
 
     @FXML
     private void search(){
-        List<Score> selectedScore = scoreFile.searchScore(searchField.getText());
+    	String name = searchField.getText();
+    	if(name.equals("")) {
+    		showScore();
+    		return;
+    	}
+        List<Score> selectedScore = new LinkedList<>();
+        Score score = scoreServerClient.getScore(searchField.getText());
+        if(score != null) {
+        	selectedScore.add(scoreServerClient.getScore(searchField.getText()));
+        }
         initScoreList(selectedScore);
     }
 
     @FXML
     private  void deleteScore(){
-        scoreFile.deleteScore();
+        scoreServerClient.deleteScore();
         showScore();
         log.info("Score deleted");
     }
 
     private void initScoreList(List<Score> scores) {
-        scoreList.setItems(FXCollections.observableList(scores));
+    	List<String> textScore = scores.stream().map(s->s.formatedText()).toList();
+        scoreList.setItems(FXCollections.observableList(textScore));
     }
 
 
