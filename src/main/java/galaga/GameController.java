@@ -8,17 +8,10 @@ import javafx.scene.input.KeyEvent;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 
 //import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
 
-import galaga_game.Game;
-import galaga_game.Score;
-import galaga_game.ScoreComparator;
-import galaga_game.ScoreServerClient;
 
 @Log4j2
 public class GameController {

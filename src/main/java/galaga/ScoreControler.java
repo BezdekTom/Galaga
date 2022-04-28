@@ -6,15 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 
 import java.util.List;
-
-import galaga_game.MyResourceBundle;
-import galaga_game.Score;
-import galaga_game.ScoreFile;
 
 @Log4j2
 public class ScoreControler {

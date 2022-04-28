@@ -1,14 +1,11 @@
 package galaga;
 
-import galaga_game.MyResourceBundle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
