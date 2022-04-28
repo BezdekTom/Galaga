@@ -11,14 +11,19 @@ import lombok.extern.log4j.Log4j2;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
+
+//import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
+
 import galaga_game.Game;
 import galaga_game.Score;
 import galaga_game.ScoreComparator;
-import galaga_game.ScoreFile;
+import galaga_game.ScoreServerClient;
 
 @Log4j2
 public class GameController {
-    private final ScoreFile scoreFile = new ScoreFile();
+	
+    private final ScoreServerClient scoreServerClient = JAXRSClientFactory.create("http://localhost:8080", ScoreServerClient.class);
 
     private  boolean running = true;
     @Setter
@@ -153,11 +158,11 @@ public class GameController {
         //previousScore.add(game.getScore());
         //Collections.sort(previousScore, new ScoreComparator().reversed());
         //scoreDAO.saveScore(previousScore);
-
-        List<Score> previousScore = scoreFile.loadScore();
-        previousScore.add(game.getScore());
-        Collections.sort(previousScore, new ScoreComparator().reversed());
-        scoreFile.saveScore(previousScore);
+    	Score score = game.getScore();
+    	
+        //if(scoreServerClient.updateScore(score) == false) {
+        	scoreServerClient.createScore(score);
+        //}
         log.info("Score saved");
     }
 

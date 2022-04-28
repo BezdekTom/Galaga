@@ -22,7 +22,7 @@ public class ScoreFile {
             String line;
             while (null != (line = bufferedReader.readLine())) {
                 String[] tokens = line.split(";");
-                highScores.add(new Score(tokens[0], Integer.parseInt(tokens[1]), ZonedDateTime.now()));
+                highScores.add(new Score((long)1,tokens[0], Integer.parseInt(tokens[1]), ZonedDateTime.now()));
             }
             return highScores;
         }catch (Exception e){
@@ -45,7 +45,7 @@ public class ScoreFile {
             while (null != (line = bufferedReader.readLine())) {
                 String[] tokens = line.split(";");
                 if(tokens[0].equals(name)){
-                    highScores.add(new Score(tokens[0], Integer.parseInt(tokens[1]), ZonedDateTime.now()));
+                    highScores.add(new Score((long)1 ,tokens[0], Integer.parseInt(tokens[1]), ZonedDateTime.now()));
                 }
             }
             return highScores;

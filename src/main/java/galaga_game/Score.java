@@ -2,6 +2,8 @@ package galaga_game;
 
 import java.time.ZonedDateTime;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
@@ -10,13 +12,24 @@ import lombok.Setter;
 
 @RequiredArgsConstructor
 @AllArgsConstructor
+@XmlRootElement
 public class Score {
+	
+	
+	@Getter
+	@Setter
+	private Long id;
+	
+	@Setter
 	@Getter
 	@NonNull
-    private final  String name;
+    private	String name;
+	
 	@Getter
 	@Setter
     private  int score = 0;
+	
+	@Getter
 	@Setter
 	private ZonedDateTime time;
 
