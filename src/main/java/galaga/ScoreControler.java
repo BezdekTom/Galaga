@@ -25,7 +25,9 @@ public class ScoreControler {
 	
 	@Setter
     private  ControlerListener controlerListener;
-
+	@Setter
+	private List<Score> scores;
+	
     @FXML
     private ListView<String> scoreList;
     @FXML
@@ -53,6 +55,10 @@ public class ScoreControler {
     }
 
     public void showScore(){
+    	if(scores != null) {
+    		initScoreList(scores);
+    		scores = null;
+    	}
         initScoreList(scoreServerClient.getScore());
         log.info("Score loaded");
     }
@@ -85,6 +91,7 @@ public class ScoreControler {
     }
 
     private void initScoreList(List<Score> scores) {
+    	Collections.sort(scores, new ScoreComparator());
     	List<String> textScore = scores.stream().map(s->s.formatedText()).toList();
         scoreList.setItems(FXCollections.observableList(textScore));
     }

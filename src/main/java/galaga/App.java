@@ -1,5 +1,16 @@
 package galaga;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
+
+import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -19,6 +30,9 @@ public class App extends Application {
     private WelcomeControler welcomeController;
     private ScoreControler scoreControler;
     private ControlersControler controlersControler;
+    private CompletableFuture<List<Score>> scores = null;
+    private ScoreServerClient scoreServerClient = JAXRSClientFactory.create("http://localhost:8080", ScoreServerClient.class,
+    		Collections.singletonList(new JacksonJaxbJsonProvider()));
 
     @Override
     public void start(Stage primaryStage){
@@ -52,13 +66,13 @@ public class App extends Application {
                     if(inputName.equals("")){
                         inputName = MyResourceBundle.getBundle().getString("player");
                     }
-                    this.starGame(primaryStage, inputName);
+                    starGame(primaryStage, inputName);
                 }
                 if(state == GameStates.SCORE){
-                    this.showScore(primaryStage, welcomeController.getName());
+                    showScore(primaryStage, welcomeController.getName());
                 }
                 if(state == GameStates.CONTROLERS){
-                    this.loadInstructions(primaryStage,welcomeController.getName());
+                    loadInstructions(primaryStage,welcomeController.getName());
                 }
             });
             //Exit program when main window is closed
@@ -68,7 +82,7 @@ public class App extends Application {
         }
     }
 
-    private  void starGame(Stage primaryStage, String name){
+    private void starGame(Stage primaryStage, String name){
         try {
             welcomeController = null;
             scoreControler = null;
@@ -85,12 +99,21 @@ public class App extends Application {
             primaryStage.resizableProperty().set(false);
             primaryStage.setTitle("GALAGA - Bezdek");
             primaryStage.show();
+            if(scores != null) {
+            	scores.get();
+            	scores = null;
+            }
             gameController = loader.getController();
-            gameController.setControlerListener((GameStates state)-> {
-                if (state == GameStates.WELCOME_PAGE) {
-                    this.startWelcome(primaryStage,gameController.getName());
-                }
-            });
+            //Asynchroni nacitani skore, po dokonceni asynchroniho ulozeni
+            gameController.setControlerListener(((state, scoreFuture) -> {
+            	scores = scoreFuture.thenApply((v) -> {
+            		return scoreServerClient.getScore();
+            	});
+            	
+            	if(state == GameStates.WELCOME_PAGE) {
+            		startWelcome(primaryStage, name);
+            	}
+            }));
             gameController.startGame(name);
             //Exit program when main window is closed
             primaryStage.setOnCloseRequest(this::exitProgram);
@@ -117,9 +140,13 @@ public class App extends Application {
             primaryStage.show();
             scoreControler = loader.getController();
             scoreControler.rightTexts();
+            if(scores != null) {
+            	log.fatal("Score from future");
+            	scoreControler.setScores(scores.get());
+            }
             scoreControler.setControlerListener((GameStates state)-> {
                 if (state == GameStates.WELCOME_PAGE) {
-                    this.startWelcome(primaryStage, name);
+                    startWelcome(primaryStage, name);
                 }
             });
             scoreControler.showScore();
@@ -149,7 +176,7 @@ public class App extends Application {
             controlersControler.rightTexts();
             controlersControler.setControlerListener((GameStates state)-> {
                 if (state == GameStates.WELCOME_PAGE) {
-                    this.startWelcome(primaryStage, name);
+                    startWelcome(primaryStage, name);
                 }
             });
             //Exit program when main window is closed
@@ -158,8 +185,6 @@ public class App extends Application {
         	log.error("Exception ocuers: {}", e.toString());
         }
     }
-
-
 
     private void exitProgram(WindowEvent evt) {
         //controller.stopGame();

@@ -9,7 +9,7 @@ public class ScoreComparator implements Comparator<Score> {
             return  Integer.compare(o1.getName().length(), o2.getName().length());
         }
         else {
-            return Integer.compare(o1.getScore(), o2.getScore());
+            return Integer.compare(o2.getScore(), o1.getScore());
         }
     }
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Properties>
+		<Property name="filename">./logs</Property>
+	</Properties>
+	<Appenders>
+		<RollingFile name="file" fileName="${filename}/galaga.log"
+			filePattern="${filename}/galaga-%d{HH-mm-ss-SSS}.log">
+			<PatternLayout>
+				<pattern>%d{HH:mm:ss.SSS} [%t] %-5level %logger{36}:%L - %msg%n
+				</pattern>
+			</PatternLayout>
+			<SizeBasedTriggeringPolicy size="1 KB" />
+		</RollingFile>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36}:%L - %msg%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Root level="info">
+			<!-- <AppenderRef ref="Console" /> -->
+			<AppenderRef ref="file" />
+		</Root>
+		<Logger level="debug" additivity="false">
+			<AppenderRef ref="Console" />
+		</Logger>
+		<Logger level="info" additivity="false">
+			<AppenderRef ref="file" />
+		</Logger>
+	</Loggers>
+</Configuration>

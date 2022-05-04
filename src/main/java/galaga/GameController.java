@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 
@@ -25,7 +26,7 @@ public class GameController {
 
     private  boolean running = true;
     @Setter
-    private  ControlerListener controlerListener;
+    private  GameControllerListener controlerListener;
     private  boolean animationRunning = false;
     private  Game game;
     private  AnimationTimer animationTimer;
@@ -123,8 +124,7 @@ public class GameController {
                     break;
                 case ESCAPE:
                     running = false;
-                    saveScore();
-                    controlerListener.switchState(GameStates.WELCOME_PAGE);
+                    controlerListener.switchState(GameStates.WELCOME_PAGE, saveScore());
                 default:
                     break;
             }
@@ -156,16 +156,13 @@ public class GameController {
 
     }
 
-    private  void saveScore(){
-        //List<Score> previousScore = scoreDAO.loadScore();
-        //previousScore.add(game.getScore());
-        //Collections.sort(previousScore, new ScoreComparator().reversed());
-        //scoreDAO.saveScore(previousScore);
+    private  CompletableFuture<Void> saveScore(){
     	Score score = game.getScore();
         try{
-        	saveAsync(score);
+        	return saveAsync(score);
         }catch (Exception e) {
 			log.error("Exception ocuers: {}",e.toString());
+			return null;
 		}
     }
 
@@ -173,16 +170,13 @@ public class GameController {
         return game.getScore().getName();
     }
     
-    private Future<String> saveAsync(Score score) throws InterruptedException{
-    	CompletableFuture<String> completableFuture = new CompletableFuture<>();
-    	
-    	Executors.newSingleThreadExecutor().submit(()->{
+    private CompletableFuture<Void> saveAsync(Score score) throws InterruptedException{
+    	CompletableFuture<Void> completableFuture = CompletableFuture.runAsync(()->{
     		if(scoreServerClient.updateScore(score) == false) {
+    			log.info("New score saved");
             	scoreServerClient.createScore(score);
             }
-            log.info("Score saved");
     	});
-    	
     	return completableFuture;
     }
 }
